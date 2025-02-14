@@ -5,7 +5,7 @@ class snake:
     def __init__(self,game):
         self.game = game
         self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
-        self.direction = Vector2(1,0)
+        self.direction = Vector2(0,0)
         self.new_block = False
 
         self.head_up = pygame.image.load("graphics/head_up.png").convert_alpha()
@@ -46,13 +46,13 @@ class snake:
                 elif self.previous_block.y == self.next_block.y:
                     self.game.display.blit(self.body_horizontal,self.block_rect)
                 else:
-                    if self.previous_block.x == -1 and self.next_block.y == -1 or self.previous_block.y == -1 and self.next_block == -1:
+                    if self.previous_block.x == -1 and self.next_block.y == -1 or self.previous_block.y == -1 and self.next_block.x == -1:
                         self.game.display.blit(self.body_tl,self.block_rect)
-                    elif self.previous_block.x == -1 and self.next_block.y == 1 or self.previous_block.y == 1 and self.next_block == -1:
+                    elif self.previous_block.x == -1 and self.next_block.y == 1 or self.previous_block.y == 1 and self.next_block.x == -1:
                         self.game.display.blit(self.body_bl,self.block_rect)               
-                    elif self.previous_block.x == 1 and self.next_block.y == -1 or self.previous_block.y == -1 and self.next_block == 1:
+                    elif self.previous_block.x == 1 and self.next_block.y == -1 or self.previous_block.y == -1 and self.next_block.x == 1:
                         self.game.display.blit(self.body_tr,self.block_rect)
-                    elif self.previous_block.x == 1 and self.next_block.y == 1 or self.previous_block.y == 1 and self.next_block == 1:
+                    elif self.previous_block.x == 1 and self.next_block.y == 1 or self.previous_block.y == 1 and self.next_block.x == 1:
                         self.game.display.blit(self.body_br,self.block_rect)     
                 
                 
@@ -62,6 +62,9 @@ class snake:
 
 
     
+    def reset(self):
+        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
+        self.direction = Vector2(0,0)
 
 
     def update_head_graphics(self):
